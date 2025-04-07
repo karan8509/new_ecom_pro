@@ -13,6 +13,7 @@ const generateToken = (userId) => {
   return { accessToken, refreshToken };
 };
 
+
 const setCookies = (res, accessToken, refreshToken) => {
   res.cookie("accessToken", accessToken, {
     httpOnly: true,
@@ -29,6 +30,7 @@ const setCookies = (res, accessToken, refreshToken) => {
   });
 };
 
+
 const Signup = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -39,7 +41,6 @@ const Signup = async (req, res) => {
       res.json({ message: "Email already exists", success: false });
       return;
     }
-
     const salt = await bcryptjs.genSalt(10);
     const hashPassword = await bcryptjs.hash(password, salt);
     const user = await User.create({

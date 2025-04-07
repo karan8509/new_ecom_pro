@@ -6,7 +6,7 @@ const {
   GetProfile,
   RefreshToken,
 } = require("../controllers/auth.Controller");
-const protectRoute = require("../Middleware/auth");
+const {protectRoute} = require("../Middleware/auth");
 const routes = express.Router();
 
 routes.post("/signup", Signup);
